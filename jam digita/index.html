@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clock">
+        <h2>sekarang pukul berapa</h2>
+        <div id="time">
+            <div><span id="hours">00</span><span>hours</span></div>
+            <div><span id="minutes">00</span><span>minutes</span></div>
+            <div><span id="seconds">00</span><span>seconds</span></div>
+            <div><span id="date">00</span><span>date</span></div>
+            <div><span id="ampm">00</span></div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function clock() {
+        let hours = document.getElementById('hours');
+        let minutes = document.getElementById('minutes');
+        let seconds = document.getElementById('seconds');
+        let date = document.getElementById('date');
+        let ampm = document.getElementById('ampm');
+        
+        let now = new Date();
+        let h = now.getHours();
+        let m = now.getMinutes();
+        let s = now.getSeconds();
+        let d = now.getDate();
+        let am = "AM";
+
+        if (h >= 12) {
+            if (h > 12) h = h - 12;
+            let am = "PM";
+        }
+
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        d = (d < 10) ? "0" + d : d;
+
+        hours.innerHTML = h;
+        minutes.innerHTML = m;
+        seconds.innerHTML = s;
+        date.innerHTML = d;
+        ampm.innerHTML = am;
+    }
+
+    setInterval(clock, 1000);
+    clock(); 
+
+</script>
+
+</html>
